@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>Net_Socket2</name>
  <channel>pear.php.net</channel>
  <summary>Network Socket Interface</summary>
@@ -25,8 +25,8 @@
   <email>alec@php.net</email>
   <active>yes</active>
  </lead>
- <date>2013-05-24</date>
- <time>20:00:00</time>
+ <date>2014-06-04</date>
+ <time>15:13:15</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -41,7 +41,8 @@
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="057d5c52b2dd9cfb2a458d532d95cfbb" name="Net/Socket2.php" role="php" />
+   <file baseinstalldir="/" md5sum="0133db1ecabec657ec0505b61e4c3385" name="Net/Socket2.php" role="php" />
+   <file baseinstalldir="/" md5sum="a720eabdd042cf64c1af8b4607d74a1f" name="Net/Socket2/Exception.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -55,5 +56,21 @@
   </required>
  </dependencies>
  <phprelease />
- <changelog />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2014-06-04</date>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
+   <notes>
+- Fix connecting when host is specified with protocol prefix e.g. ssl://
+   </notes>
+  </release>
+ </changelog>
 </package>
