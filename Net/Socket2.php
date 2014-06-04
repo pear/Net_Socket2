@@ -26,11 +26,7 @@
  * @link      http://pear.php.net/packages/Net_Socket2
  */
 
-require_once 'PEAR.php';
-
-define('NET_SOCKET2_READ', 1);
-define('NET_SOCKET2_WRITE', 2);
-define('NET_SOCKET2_ERROR', 4);
+require "Net/Socket2/Exception.php"
 
 /**
  * Generalized Socket class.
@@ -43,8 +39,13 @@ define('NET_SOCKET2_ERROR', 4);
  * @license   http://www.php.net/license/2_02.txt PHP 2.02
  * @link      http://pear.php.net/packages/Net_Socket2
  */
-class Net_Socket2 extends PEAR
+class Net_Socket2
 {
+
+    const READ = 1;
+    const WRITE = 2;
+    const ERROR = 4;
+
     /**
      * Socket file pointer.
      * @var resource $fp
@@ -628,13 +629,13 @@ class Net_Socket2 extends PEAR
         $read   = null;
         $write  = null;
         $except = null;
-        if ($state & NET_SOCKET2_READ) {
+        if ($state & self::READ) {
             $read[] = $this->fp;
         }
-        if ($state & NET_SOCKET2_WRITE) {
+        if ($state & self::WRITE) {
             $write[] = $this->fp;
         }
-        if ($state & NET_SOCKET2_ERROR) {
+        if ($state & self::ERROR) {
             $except[] = $this->fp;
         }
         if (false === ($sr = stream_select($read, $write, $except,
@@ -644,13 +645,13 @@ class Net_Socket2 extends PEAR
 
         $result = 0;
         if (count($read)) {
-            $result |= NET_SOCKET2_READ;
+            $result |= self::ET2_READ;
         }
         if (count($write)) {
-            $result |= NET_SOCKET2_WRITE;
+            $result |= self::WRITE;
         }
         if (count($except)) {
-            $result |= NET_SOCKET2_ERROR;
+            $result |= self::ERROR;
         }
         return $result;
     }
@@ -674,12 +675,13 @@ class Net_Socket2 extends PEAR
     {
         if (version_compare(phpversion(), "5.1.0", ">=")) {
             if (!is_resource($this->fp)) {
-                return $this->raiseError('not connected');
+                throw new Net_Socket2_Exception('not connected');
             }
             return @stream_socket_enable_crypto($this->fp, $enabled, $type);
         } else {
-            $msg = 'Net_Socket2::enableCrypto() requires php version >= 5.1.0';
-            return $this->raiseError($msg);
+            throw new Net_Socket2_Exception(
+                'Net_Socket2::enableCrypto() requires php version >= 5.1.0'
+            );
         }
     }
 
