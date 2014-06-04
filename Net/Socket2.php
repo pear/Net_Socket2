@@ -188,7 +188,7 @@ class Net_Socket2
      */
     function disconnect()
     {
-        if (is_resource($this->fp) {
+        if (is_resource($this->fp)) {
             @fclose($this->fp);
             $this->fp = null;
         }
