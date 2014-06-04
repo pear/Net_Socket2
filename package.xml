@@ -26,7 +26,7 @@
   <active>yes</active>
  </lead>
  <date>2014-06-04</date>
- <time>15:18:39</time>
+ <time>15:31:25</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -37,11 +37,12 @@
  </stability>
  <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
-- Fix connecting when host is specified with protocol prefix e.g. ssl://
+Fork for PHP5+
+QA release
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="964eda4af71ca39abb59df25256824c1" name="Net/Socket2.php" role="php" />
+   <file baseinstalldir="/" md5sum="8450a63397ee05500e8abb1ed676a4b0" name="Net/Socket2.php" role="php" />
    <file baseinstalldir="/" md5sum="a720eabdd042cf64c1af8b4607d74a1f" name="Net/Socket2/Exception.php" role="php" />
   </dir>
  </contents>
@@ -69,7 +70,8 @@
    <date>2014-06-04</date>
    <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>
-- Fix connecting when host is specified with protocol prefix e.g. ssl://
+Fork for PHP5+
+QA release
    </notes>
   </release>
  </changelog>
