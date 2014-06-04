@@ -1,8 +1,8 @@
 <?php
 /**
- * Net_Socket
+ * Net_Socket2
  *
- * PHP Version 4
+ * PHP Version 5
  *
  * Copyright (c) 1997-2013 The PHP Group
  *
@@ -18,32 +18,32 @@
  *          Chuck Hagenbuch <chuck@horde.org>
  *
  * @category  Net
- * @package   Net_Socket
+ * @package   Net_Socket2
  * @author    Stig Bakken <ssb@php.net>
  * @author    Chuck Hagenbuch <chuck@horde.org>
  * @copyright 1997-2003 The PHP Group
  * @license   http://www.php.net/license/2_02.txt PHP 2.02
- * @link      http://pear.php.net/packages/Net_Socket
+ * @link      http://pear.php.net/packages/Net_Socket2
  */
 
 require_once 'PEAR.php';
 
-define('NET_SOCKET_READ', 1);
-define('NET_SOCKET_WRITE', 2);
-define('NET_SOCKET_ERROR', 4);
+define('NET_SOCKET2_READ', 1);
+define('NET_SOCKET2_WRITE', 2);
+define('NET_SOCKET2_ERROR', 4);
 
 /**
  * Generalized Socket class.
  *
  * @category  Net
- * @package   Net_Socket
+ * @package   Net_Socket2
  * @author    Stig Bakken <ssb@php.net>
  * @author    Chuck Hagenbuch <chuck@horde.org>
  * @copyright 1997-2003 The PHP Group
  * @license   http://www.php.net/license/2_02.txt PHP 2.02
- * @link      http://pear.php.net/packages/Net_Socket
+ * @link      http://pear.php.net/packages/Net_Socket2
  */
-class Net_Socket extends PEAR
+class Net_Socket2 extends PEAR
 {
     /**
      * Socket file pointer.
@@ -628,13 +628,13 @@ class Net_Socket extends PEAR
         $read   = null;
         $write  = null;
         $except = null;
-        if ($state & NET_SOCKET_READ) {
+        if ($state & NET_SOCKET2_READ) {
             $read[] = $this->fp;
         }
-        if ($state & NET_SOCKET_WRITE) {
+        if ($state & NET_SOCKET2_WRITE) {
             $write[] = $this->fp;
         }
-        if ($state & NET_SOCKET_ERROR) {
+        if ($state & NET_SOCKET2_ERROR) {
             $except[] = $this->fp;
         }
         if (false === ($sr = stream_select($read, $write, $except,
@@ -644,13 +644,13 @@ class Net_Socket extends PEAR
 
         $result = 0;
         if (count($read)) {
-            $result |= NET_SOCKET_READ;
+            $result |= NET_SOCKET2_READ;
         }
         if (count($write)) {
-            $result |= NET_SOCKET_WRITE;
+            $result |= NET_SOCKET2_WRITE;
         }
         if (count($except)) {
-            $result |= NET_SOCKET_ERROR;
+            $result |= NET_SOCKET2_ERROR;
         }
         return $result;
     }
@@ -678,7 +678,7 @@ class Net_Socket extends PEAR
             }
             return @stream_socket_enable_crypto($this->fp, $enabled, $type);
         } else {
-            $msg = 'Net_Socket::enableCrypto() requires php version >= 5.1.0';
+            $msg = 'Net_Socket2::enableCrypto() requires php version >= 5.1.0';
             return $this->raiseError($msg);
         }
     }
