@@ -26,7 +26,7 @@
  * @link      http://pear.php.net/packages/Net_Socket2
  */
 
-require "Net/Socket2/Exception.php"
+require "Net/Socket2/Exception.php";
 
 /**
  * Generalized Socket class.
@@ -121,7 +121,7 @@ class Net_Socket2
         }
 
         if (!$addr) {
-            return $this->raiseError('$addr cannot be empty');
+            throw new InvalidArgumentException('$addr cannot be empty');
         } else if (strspn($addr, ':.0123456789') == strlen($addr)) {
             $this->addr = strpos($addr, ':') !== false ? '['.$addr.']' : $addr;
         } else {
@@ -171,7 +171,7 @@ class Net_Socket2
                 $errstr = $php_errormsg;
             }
             @ini_set('track_errors', $old_track_errors);
-            return $this->raiseError($errstr, $errno);
+            throw new Net_Socket2_Exception($errstr, $errno);
         }
 
         @ini_set('track_errors', $old_track_errors);
@@ -189,7 +189,7 @@ class Net_Socket2
     function disconnect()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         @fclose($this->fp);
@@ -234,7 +234,7 @@ class Net_Socket2
     function setBlocking($mode)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $this->blocking = $mode;
@@ -256,7 +256,7 @@ class Net_Socket2
     function setTimeout($seconds = null, $microseconds = null)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         if ($seconds === null && $microseconds === null) {
@@ -286,14 +286,14 @@ class Net_Socket2
     function setWriteBuffer($size)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $returned = stream_set_write_buffer($this->fp, $size);
         if ($returned == 0) {
             return true;
         }
-        return $this->raiseError('Cannot set write buffer.');
+        throw new Net_Socket2_Exception('Cannot set write buffer.');
     }
 
     /**
@@ -314,7 +314,7 @@ class Net_Socket2
     function getStatus()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         return stream_get_meta_data($this->fp);
@@ -335,7 +335,7 @@ class Net_Socket2
     function gets($size = null)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         if (is_null($size)) {
@@ -360,7 +360,7 @@ class Net_Socket2
     function read($size)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         return @fread($this->fp, $size);
@@ -383,7 +383,7 @@ class Net_Socket2
     function write($data, $blocksize = null)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         if (is_null($blocksize) && !OS_WINDOWS) {
@@ -398,7 +398,7 @@ class Net_Socket2
                 }
 
                 if (!empty($meta_data['timed_out'])) {
-                    return $this->raiseError('timed out');
+                    throw new Net_Socket2_Exception('timed out');
                 }
             }
 
@@ -422,7 +422,7 @@ class Net_Socket2
                     }
 
                     if (!empty($meta_data['timed_out'])) {
-                        return $this->raiseError('timed out');
+                        throw new Net_Socket2_Exception('timed out');
                     }
 
                     return $written;
@@ -446,7 +446,7 @@ class Net_Socket2
     function writeLine($data)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         return fwrite($this->fp, $data . $this->newline);
@@ -475,7 +475,7 @@ class Net_Socket2
     function readByte()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         return ord(@fread($this->fp, 1));
@@ -491,7 +491,7 @@ class Net_Socket2
     function readWord()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $buf = @fread($this->fp, 2);
@@ -508,7 +508,7 @@ class Net_Socket2
     function readInt()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $buf = @fread($this->fp, 4);
@@ -526,7 +526,7 @@ class Net_Socket2
     function readString()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $string = '';
@@ -546,7 +546,7 @@ class Net_Socket2
     function readIPAddress()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $buf = @fread($this->fp, 4);
@@ -566,7 +566,7 @@ class Net_Socket2
     function readLine()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $line = '';
@@ -598,7 +598,7 @@ class Net_Socket2
     function readAll()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $data = '';
@@ -623,7 +623,7 @@ class Net_Socket2
     function select($state, $tv_sec, $tv_usec = 0)
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            throw new Net_Socket2_Exception('not connected');
         }
 
         $read   = null;
