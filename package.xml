@@ -8,6 +8,12 @@
   (byte-wise, block-wise, line-wise and special formats like network
   byte-order ip addresses).</description>
  <lead>
+  <name>Daniel O'Connor</name>
+  <user>doconnor</user>
+  <email>daniel.oconnor@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
   <name>Chuck Hagenbuch</name>
   <user>chagenbu</user>
   <email>chuck@horde.org</email>
