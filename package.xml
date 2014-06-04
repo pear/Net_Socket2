@@ -26,7 +26,7 @@
   <active>yes</active>
  </lead>
  <date>2014-06-04</date>
- <time>15:13:15</time>
+ <time>15:18:39</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -41,7 +41,7 @@
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="0133db1ecabec657ec0505b61e4c3385" name="Net/Socket2.php" role="php" />
+   <file baseinstalldir="/" md5sum="964eda4af71ca39abb59df25256824c1" name="Net/Socket2.php" role="php" />
    <file baseinstalldir="/" md5sum="a720eabdd042cf64c1af8b4607d74a1f" name="Net/Socket2/Exception.php" role="php" />
   </dir>
  </contents>
@@ -63,8 +63,8 @@
     <api>0.1.0</api>
    </version>
    <stability>
-    <release>stable</release>
-    <api>stable</api>
+    <release>beta</release>
+    <api>beta</api>
    </stability>
    <date>2014-06-04</date>
    <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
