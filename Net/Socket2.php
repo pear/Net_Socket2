@@ -388,7 +388,7 @@ class Net_Socket2
             $written = @fwrite($this->fp, $data);
 
             // Check for timeout or lost connection
-            if (!$written) {
+            if ($written===false) {
                 $meta_data = $this->getStatus();
 
                 if (!is_array($meta_data)) {
@@ -412,7 +412,7 @@ class Net_Socket2
                 $written = @fwrite($this->fp, substr($data, $pos, $blocksize));
 
                 // Check for timeout or lost connection
-                if (!$written) {
+                if ($written===false) {
                     $meta_data = $this->getStatus();
 
                     if (!is_array($meta_data)) {
