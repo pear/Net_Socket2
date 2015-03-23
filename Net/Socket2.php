@@ -384,7 +384,7 @@ class Net_Socket2
             throw new Net_Socket2_Exception('not connected');
         }
 
-        if (is_null($blocksize) && !OS_WINDOWS) {
+        if (is_null($blocksize) && !(substr(PHP_OS, 0, 3) == 'WIN')) {
             $written = @fwrite($this->fp, $data);
 
             // Check for timeout or lost connection
