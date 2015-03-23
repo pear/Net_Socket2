@@ -8,7 +8,7 @@
   (byte-wise, block-wise, line-wise and special formats like network
   byte-order ip addresses).</description>
  <lead>
-  <name>Daniel O'Connor</name>
+  <name>Daniel O&apos;Connor</name>
   <user>doconnor</user>
   <email>daniel.oconnor@gmail.com</email>
   <active>yes</active>
@@ -31,10 +31,10 @@
   <email>alec@php.net</email>
   <active>yes</active>
  </lead>
- <date>2014-06-04</date>
- <time>15:31:25</time>
+ <date>2015-03-24</date>
+ <time>01:00:54</time>
  <version>
-  <release>0.1.0</release>
+  <release>0.1.1</release>
   <api>0.1.0</api>
  </version>
  <stability>
@@ -43,12 +43,11 @@
  </stability>
  <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
-Fork for PHP5+
-QA release
+Bug #20434	constant OS_WINDOWS is not defined
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="8450a63397ee05500e8abb1ed676a4b0" name="Net/Socket2.php" role="php" />
+   <file baseinstalldir="/" md5sum="ede482fec19a61532df378691165f21b" name="Net/Socket2.php" role="php" />
    <file baseinstalldir="/" md5sum="a720eabdd042cf64c1af8b4607d74a1f" name="Net/Socket2/Exception.php" role="php" />
   </dir>
  </contents>
@@ -78,6 +77,21 @@ QA release
    <notes>
 Fork for PHP5+
 QA release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2015-03-24</date>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
+   <notes>
+Bug #20434	constant OS_WINDOWS is not defined
    </notes>
   </release>
  </changelog>
